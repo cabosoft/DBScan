@@ -9,6 +9,10 @@
 #import "DBScan.h"
 #import "EuclidianDistanceFunction.h"
 
+#if DEBUG
+static BOOL sDBScanLoggingEnabled = NO;
+#endif
+
 @implementation DBScan
 //
 //- (id)initWithPoints:(NSArray *)points epsilon:(float)epsilon minNumberOfPointsInCluster:(int)minNumberOfPoints {
@@ -17,6 +21,7 @@
 //     minNumberOfPointsInCluster:minNumberOfPoints
 //               distanceFunction:[EuclidianDistanceFunction new]];
 //}
+
 
 - (id)initWithPoints:(NSArray *)points epsilon:(float)epsilon minNumberOfPointsInCluster:(int)minNumberOfPoints distanceFunction:(id <DistanceFunction>)function {
     self = [super init];
@@ -60,10 +65,15 @@
         }
     }
 
-    NSLog(@"%i clusters found", (int)clusters.count);
-    NSLog(@"%i points mapped to cluster", (int)_pointsMappedTocluster.count);
-    NSLog(@"%i noise points", (int)_noise.count);
-
+#if DEBUG
+	if (sDBScanLoggingEnabled)
+	{
+		NSLog(@"%i clusters found", (int)clusters.count);
+		NSLog(@"%i points mapped to cluster", (int)_pointsMappedTocluster.count);
+		NSLog(@"%i noise points", (int)_noise.count);
+	}
+#endif
+	
     return clusters;
 }
 
@@ -142,4 +152,10 @@
     return [NSArray arrayWithArray:distanceMatrix];	// return immutable array
 }
 
+#if DEBUG
++(void) setDebugLogging:(BOOL) log;
+{
+	sDBScanLoggingEnabled = log;
+}
+#endif
 @end

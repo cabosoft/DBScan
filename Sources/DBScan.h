@@ -28,5 +28,8 @@
 
 - (id)initWithPoints:(NSArray *)points epsilon:(float)epsilon minNumberOfPointsInCluster:(int)minNumberOfPoints distanceFunction:(id <DistanceFunction>)function;
 
+#if DEBUG
++(void) setDebugLogging:(BOOL) log;
+#endif
 
 @end

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DBScan"
-  s.version      = "1.6.0"
+  s.version      = "1.6.1"
   s.summary      = "A data clustering algorithm."
   s.license      = 'MIT'
 
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.8'
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
-  s.source       = { :git => "https://github.com/cabosoft/DBScan.git", :tag => "1.6.0" }
+  s.source       = { :git => "https://github.com/cabosoft/DBScan.git", :tag => "1.6.1" }
 
   s.source_files  = "Sources/*.{h,m,mm}"
   s.exclude_files = "Sources/main.m"
